@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Balanced Scorecard CY2025 — Replica</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --navy: #0D1164;
+      --violet: #640D5F;
+      --pink:  #EA2264;
+      --peach: #F78D60;
+    }
+    body { background: linear-gradient(135deg,var(--navy),var(--violet)); }
+    .card { background: #fff; border-radius: 16px; padding: 20px; }
+    table { border-collapse: collapse; width:100%; table-layout: fixed; font-family: Arial, Helvetica, sans-serif; }
+    th, td { border: 2px solid #000; padding: 6px; font-size: 12px; vertical-align: middle; }
+    thead th { background: var(--navy); color: #fff; padding: 10px; }
+    thead tr.sub th { background: var(--pink); }
+
+    /* left perspective label style */
+    .persp { background: var(--violet); color: #fff; font-weight:700; width:60px; text-align:center; padding:0; }
+    .vertical { writing-mode: vertical-rl; transform: rotate(180deg); padding:10px; }
+
+    .small { font-size: 11px; }
+    .center { text-align: center; }
+    .left { text-align: left; }
+    .initiatives { width:18%; }
+
+    /* editable cell highlight */
+    .editable { outline: none; }
+    .editable:hover { background: #fff4ea; cursor: text; }
+    .editable:focus { background: #fff0de; }
+
+    /* Targets/Annual header color */
+    .target-head { background: rgba(231,33,100,0.06); }
+
+    .remark { color: var(--peach); }
+  </style>
+</head>
+<body class="min-h-screen p-8">
+  <div class="card mx-auto max-w-[1200px]">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-4">
+        <img src="logo-left-1.png" alt="logo1" style="height:48px" />
+        <img src="logo-left-2.png" alt="logo2" style="height:48px" />
+      </div>
+      <div class="text-center">
+        <div class="text-sm font-bold">AC OF S FOR LOGISTICS, S4</div>
+        <div class="text-sm font-bold">BALANCED SCORECARD CY2025</div>
+      </div>
+      <div>
+        <img src="navy2028.png" alt="navy" style="height:48px" />
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2" class="persp"><div class="vertical">PERSPECTIVES</div></th>
+            <th rowspan="2">OBJECTIVES</th>
+            <th rowspan="2">MEASURES</th>
+            <th rowspan="2">2022</th>
+            <th rowspan="2">2023</th>
+            <th rowspan="2">2024</th>
+            <th colspan="4">Actual</th>
+            <th colspan="2">Target</th>
+            <th rowspan="2" class="initiatives">INITIATIVES</th>
+          </tr>
+          <tr class="sub">
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Q3</th>
+            <th>Q4</th>
+            <th>2024</th>
+            <th>2025</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- PERSONNEL (rowspan 3) -->
+          <tr>
+            <td rowspan="3" class="persp"><div class="vertical">PERSONNEL</div></td>
+            <td class="left small">1. Provide Sufficient and Qualified S4 Personnel (S4)</td>
+            <td class="left small">AFP JREFS S4 Personnel Readiness Rating (BSC4 Sustained, PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives">1. Implement Professional and Physical Development Programs (S4)</td>
+          </tr>
+
+          <tr>
+            <td class="left small">2. Develop and Sustain Highly Competent S4 Personnel (S4)</td>
+            <td class="left small">S4 Training Readiness Rating (BSC4S4 Sustained, PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives">2. Enhance implementation of personnel development system (S4)</td>
+          </tr>
+
+          <tr>
+            <td class="left small">3. Sustain Morally Upright and Motivated S4 Personnel (S4)</td>
+            <td class="left small">S4 Personnel (Military and Civilian) Compliant to AFP and CSC Rules and Regulations</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives">3. Implement Moral and Character-Building Program (S4)</td>
+          </tr>
+
+          <!-- ORGANIZATION (rowspan 1) -->
+          <tr>
+            <td rowspan="1" class="persp"><div class="vertical">ORGANIZATION</div></td>
+            <td class="left small">4. Sustain a Dynamic and Responsive Multi-capable S4, HPN &amp; HSG (S4)</td>
+            <td class="left small">S4 TO Fill Up (Wg/Ranido Civ HR)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives">4. Establish Responsive Office Management System (S4)</td>
+          </tr>
+
+          <!-- RESOURCES (rowspan 3) -->
+          <tr>
+            <td rowspan="3" class="persp"><div class="vertical">RESOURCES</div></td>
+            <td class="left small">5. Implement Effective and Efficient Financial Management (S4)</td>
+            <td class="left small">S4 Obligation Rate (Wg Ranido Civ HR)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives">5. Ensure Timely and Judicious Implementation of Financial Programs (S4)</td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">S4 Disbursement Rate (Wg Ranido Civ HR)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">Percentage of S4 complied reportorial requirements (Wg Ranido Civ HR)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <!-- CAPABILITY (rowspan 5) -->
+          <tr>
+            <td rowspan="5" class="persp"><div class="vertical">CAPABILITY</div></td>
+            <td class="left small">6. Sustain Reliable HPN &amp; HSG Equipment and Facilities (S4)</td>
+            <td class="left small">Equipment Readiness Rating (Wg Ranido Civ HR)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives">6. Ensure Implementation of Equipment and Facility Maintenance Program (S4)</td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">Facility Readiness Rating (Wg Ranido Civ HR)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">No. of Purchase Order made (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">No. of Facility Repair and Maintenance conducted (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">No. of Equipment Repair and Maintenance conducted (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <!-- ACCOMPLISHMENT (rowspan 6) -->
+          <tr>
+            <td rowspan="6" class="persp"><div class="vertical">ACCOMPLISHMENT</div></td>
+            <td class="left small">7. Effective and efficient delivery of Primary Unit Mandate (S4)</td>
+            <td class="left small">% POL utilized (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives">7. Execute Initiatives to Accomplish Unit Mission (S4)</td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">% 72-100 OPTAR utilized (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">% Ammunition utilized (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">No. of Monthly reports created/submitted (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">No. of Quarterly reports created/submitted (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+          <tr>
+            <td class="left small"></td>
+            <td class="left small">No. of Annual reports created/submitted (S10P ... PN)</td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center editable" contenteditable="true"></td>
+            <td class="center"></td>
+            <td class="center"></td>
+            <td class="left small initiatives"></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-6 flex justify-between text-sm">
+      <div>
+        <div class="small">Prepared by:</div>
+        <div class="font-bold mt-3">LCDR KARL LOU A TORIBIO PN</div>
+        <div>AC of S for Logistics, S4, HPN &amp; HSG</div>
+      </div>
+
+      <div class="text-right">
+        <div class="small">Verified by:</div>
+        <div class="font-bold mt-3">CDR CRIZALDY G SALAZAR PN</div>
+        <div>HPN &amp; HSG Sail Plan Officer</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

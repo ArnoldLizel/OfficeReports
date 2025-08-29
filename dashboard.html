@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Office Reports Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .active-tab {
+      background-color: #2563eb;
+    }
+     body {
+      background: url('imagesko/img1.jpg') no-repeat center center fixed;
+      background-size: cover;
+     }
+  
+  </style>
+  
+</head>
+<body class="flex min-h-screen bg-gray-100">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-blue-800 text-white p-4">
+    <h2 class="text-2xl font-bold mb-6">Sail Plan and Office Reports</h2>
+    <nav class="flex flex-col space-y-2">
+      <button onclick="loadPage('VehicleInventoryReport.html', this)" class="menu-btn bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-left">Vehicle Inventory Report</button>
+      <button onclick="loadPage('PNJointReadinessReport.html', this)" class="menu-btn bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-left">PN Joint Readiness Report</button>
+      <button onclick="loadPage('EPA.html', this)" class="menu-btn bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-left">HSG Early Procurement Projects</button>
+      <button onclick="loadPage('CommelexReport.html', this)" class="menu-btn bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-left">Commelex Report</button>
+      <button onclick="loadPage('MeralcoReport.html', this)" class="menu-btn bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-left">Meralco Bill Report</button>
+      <button onclick="loadPage('MayniladReport.html', this)" class="menu-btn bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-left">Maynilad Bill Report</button>
+      <button onclick="loadPage('OBSC.html', this)" class="menu-btn bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded text-left">Office Balanced Scorecard</button>
+    </nav>
+  </aside>
+
+  <!-- Content Area -->
+  <main class="flex-1 p-6" id="content">
+    <!-- Initially blank -->
+  </main>
+
+  <!-- JavaScript -->
+<script>
+  const menuButtons = document.querySelectorAll(".menu-btn");
+
+  function loadPage(page, btn) {
+    // Remove active class from all buttons
+    menuButtons.forEach(b => b.classList.remove("active-tab"));
+    // Add active class to clicked button
+    btn.classList.add("active-tab");
+
+    // Load page inside iframe
+    document.getElementById("content").innerHTML = `
+      <iframe src="${page}" width="100%" height="1000" frameborder="0" style="border:none;"></iframe>
+    `;
+  }
+</script>
+
+</body>
+</html>

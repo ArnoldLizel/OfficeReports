@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inventory Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Stylish font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0D1164; /* Deep Blue */
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .header {
+      background-color: #EA2264; /* Pink/Red Accent */
+    }
+    .sub-header {
+      background-color: #640D5F; /* Purple */
+    }
+    .highlight {
+      background-color: #F78D60; /* Orange Coral */
+      color: #000000;
+    }
+    select {
+      background-color: #F78D60;
+      color: #000000;
+      font-weight: 600;
+      border-radius: 0.5rem;
+    }
+    select option {
+      background-color: #F78D60;
+      color: #000000;
+    }
+    table {
+      background-color: #0D1164;
+      color: white;
+    }
+    td, th {
+      border: 1px solid #ffffff33; /* subtle white border */
+    }
+    tr:nth-child(even):not(.sub-header-row) {
+      background-color: #11176f; /* slightly lighter than #0D1164 */
+    }
+  </style>
+</head>
+<body class="p-6">
+
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold text-center mb-6">Inventory Management</h1>
+
+    <!-- Office Dropdown -->
+    <div class="mb-6">
+      <label for="office" class="block mb-2 font-semibold">Select Office:</label>
+      <select id="office" class="w-full p-2 rounded">
+        <option value="">-- Select an Office --</option>
+        <option>FOIC</option><option>VCOM</option><option>CNS</option><option>N1</option>
+        <option>N2</option><option>N3</option><option>N4</option><option>N5</option>
+        <option>N6</option><option>N7</option><option>N8</option><option>N9</option>
+        <option>N10</option><option>N11</option><option>NIOFC</option><option>MCPO</option>
+        <option>CRDO</option><option>CNLE</option><option>NSPAO</option><option>NPAO</option>
+        <option>ONSSSM</option><option>HSG</option><option>TNJA</option><option>TNCC</option>
+        <option>TCSN</option><option>TCNN</option><option>TCDSN</option><option>TNCE</option>
+        <option>PNOLOAC</option><option>TNIA</option><option>NSO</option><option>NASO</option>
+        <option>TNIG</option><option>OESPA</option><option>TNPM</option><option>OTNA</option>
+        <option>PNGADC</option><option>PNREO</option><option>ONIA</option><option>PNMO</option>
+        <option>PNMCMC</option>
+      </select>
+    </div>
+
+    <!-- Inventory Table -->
+    <div id="inventoryTable" class="overflow-x-auto">
+      <table class="w-full border border-gray-700">
+        <thead>
+          <tr class="header text-white">
+            <th class="p-2 border">Item Description</th>
+            <th class="p-2 border">Quantity</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const items = [
+      { text: "C4ISTAR", colspan: true },
+      { text: "A. FIXED COMMUNICATION - Telephone Set" },
+      { text: "A. COMBAT NET RADIO - Radio Set, VHF MB, Base(COTS)" },
+      { text: "A. COMBAT NET RADIO - Radio Set, VHF MB, HH(COTS)" },
+      { text: "A. COMBAT NET RADIO - Radio Set, VHF AB, Base(COTS)" },
+      { text: "A. COMBAT NET RADIO - Radio Set, VHF/UHF Multi Band, HH (COTS)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Personnel Management System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Intelligence Management System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Base Support and Security System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Naval Operations Management System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Logistics Management System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Plans and Programs Management System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Digital Library (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Repair and Maintenance Monitoring System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Performance Management System (Red Network)" },
+      { text: "C. INFORMATION MANAGEMENT SYSTEM - Health Services Management System (Red Network)" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Computer, Desktop" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Computer, Laptop" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Router/Modem" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Switch, Managed" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Switch, Unmanaged" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Printer with Scanner" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Tablet" },
+      { text: "D. COMPUTER SYSTEM FOR ADMIN AND OPNS USE - Scanner, Hi-Speed" },
+      { text: "E. OTHER C2 Systems - PA System Class B" },
+      { text: "E. OTHER C2 Systems - PA System Class D" },
+      { text: "E. OTHER C2 Systems - CCTV System" },
+      { text: "E. OTHER C2 Systems - Multi Media Projector" },
+      { text: "E. OTHER C2 Systems - Digital/Video Camera" },
+      { text: "E. OTHER C2 Systems - Monitor Display for Operation" },
+      { text: "E. OTHER C2 Systems - Fax Machine" },
+      { text: "E. OTHER C2 Systems - LED Wall/Digital Screen" },
+      { text: "E. OTHER C2 Systems - Conference System" },
+      { text: "H. ACCESS SYSTEMS - Biometrics" },
+      { text: "M. SUPPORT SYSTEM - Solar Power System" },
+    ];
+
+    const tbody = document.getElementById("tableBody");
+    items.forEach(item => {
+      const row = document.createElement("tr");
+
+      if (item.colspan) {
+        row.classList.add("sub-header-row");
+        row.innerHTML = `<td colspan="2" class="sub-header text-white font-bold p-2">${item.text}</td>`;
+      } else {
+        row.innerHTML = `
+          <td class="p-2 border">${item.text}</td>
+          <td class="p-2 border text-center">
+            <input type="number" class="w-20 p-1 border rounded highlight" />
+          </td>
+        `;
+      }
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>

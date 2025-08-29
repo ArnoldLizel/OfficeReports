@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Water Bill CY2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#0D1164] to-[#640D5F] p-6">
+
+  <div class="w-full max-w-6xl bg-white shadow-2xl rounded-xl overflow-hidden">
+    <h1 class="text-center text-3xl font-bold py-4 text-white bg-[#0D1164]">
+      WATER BILL CY2025
+    </h1>
+
+    <div class="overflow-x-auto">
+      <table class="w-full border border-gray-300 text-sm">
+        <thead>
+          <tr class="text-white text-center">
+            <th class="p-3 bg-[#0D1164]">MAYNILAD 2025</th>
+            <th class="p-3 bg-[#640D5F]">LOCATION</th>
+            <th class="p-3 bg-[#EA2264]">CUBIC PER METER</th>
+            <th class="p-3 bg-[#F78D60]">TOTAL CUBIC PER METER PER MONTH</th>
+            <th class="p-3 bg-[#0D1164]">AMOUNT PHP/MONTH</th>
+          </tr>
+        </thead>
+        <tbody id="billTable">
+          <!-- JANUARY -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 JAN - 09 FEB</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- FEBRUARY -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 FEB - 09 MAR</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- MARCH -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 MAR - 09 APR</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- APRIL -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 APR - 09 MAY</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- MAY -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 MAY - 09 JUN</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- JUNE -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 JUN - 09 JUL</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- JULY -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 JUL - 09 AUG</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- AUGUST -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 AUG - 09 SEP</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- SEPTEMBER -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 SEP - 09 OCT</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- OCTOBER -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 OCT - 09 NOV</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- NOVEMBER -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 NOV - 09 DEC</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+          <!-- DECEMBER -->
+          <tr class="text-center">
+            <td class="border p-2 font-semibold bg-[#F78D60]/20">09 DEC - 09 JAN</td>
+            <td class="border p-2 bg-[#640D5F]/10">HPN, NSJA</td>
+            <td class="border p-2" contenteditable="true"></td>
+            <td class="border p-2 kwh" contenteditable="true"></td>
+            <td class="border p-2 amount"></td>
+          </tr>
+
+          <!-- TOTAL -->
+          <tr class="text-center font-bold bg-[#EA2264] text-white">
+            <td colspan="3" class="border p-2">TOTAL</td>
+            <td id="totalKwh" class="border p-2">0</td>
+            <td id="totalAmount" class="border p-2">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function computeTotals() {
+      let totalCubic = 0;
+      let totalAmount = 0;
+
+      document.querySelectorAll("#billTable tr").forEach(row => {
+        const perCubic = parseFloat(row.cells[2]?.innerText) || 0;
+        const cubic = parseFloat(row.cells[3]?.innerText) || 0;
+        const amountCell = row.querySelector(".amount");
+
+        if (amountCell) {
+          const amount = perCubic * cubic;
+          amountCell.innerText = amount ? amount.toFixed(2) : "";
+          totalCubic += cubic;
+          totalAmount += amount;
+        }
+      });
+
+      document.getElementById("totalKwh").innerText = totalCubic.toFixed(2);
+      document.getElementById("totalAmount").innerText = totalAmount.toFixed(2);
+    }
+
+    document.addEventListener("input", computeTotals);
+  </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Inventory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-gradient-to-r from-[#0D1164] to-[#640D5F] min-h-screen p-6 text-white">
+
+  <div class="max-w-7xl mx-auto bg-white text-black rounded-lg shadow-lg p-6">
+    <h1 class="text-2xl font-bold mb-4 text-[#EA2264]">Vehicle Inventory</h1>
+
+    <!-- Add Vehicle Form -->
+    <form id="addForm" class="grid grid-cols-2 gap-4 mb-6">
+      <input id="office" placeholder="Office" class="p-2 border rounded" required>
+      <input id="vehicle_type" placeholder="Type of Vehicle" class="p-2 border rounded" required>
+      <input id="plate_number" placeholder="Plate Number" class="p-2 border rounded">
+      <input id="engine_number" placeholder="Engine Number" class="p-2 border rounded">
+      <input id="chassis_number" placeholder="Chassis Number" class="p-2 border rounded">
+      <input id="remarks" placeholder="Remarks" class="p-2 border rounded">
+      <input id="date_of_registration" type="date" class="p-2 border rounded">
+      <button class="bg-[#F78D60] text-white px-4 py-2 rounded col-span-2">Add Vehicle</button>
+    </form>
+
+    <!-- Buttons -->
+    <div class="flex space-x-4 mb-4">
+      <button onclick="exportToExcel()" class="bg-[#0D1164] text-white px-4 py-2 rounded">Export to Excel</button>
+      <input type="file" id="importFile" class="hidden" accept=".xlsx,.xls" onchange="importFromExcel(event)">
+      <button onclick="document.getElementById('importFile').click()" class="bg-[#640D5F] text-white px-4 py-2 rounded">Import Excel</button>
+      <button onclick="deleteSelected()" class="bg-[#EA2264] text-white px-4 py-2 rounded">Delete Selected</button>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full border border-gray-300 text-sm text-left">
+        <thead class="bg-[#EA2264] text-white">
+          <tr>
+            <th class="border p-2"><input type="checkbox" id="selectAll"></th>
+            <th class="border p-2">ID</th>
+            <th class="border p-2">Office</th>
+            <th class="border p-2">Type of Vehicle</th>
+            <th class="border p-2">Plate Number</th>
+            <th class="border p-2">Engine Number</th>
+            <th class="border p-2">Chassis Number</th>
+            <th class="border p-2">Remarks</th>
+            <th class="border p-2">Date of Registration</th>
+          </tr>
+        </thead>
+        <tbody id="vehicleTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+<script>
+  const SUPABASE_URL = "https://njuwiavgqwnctxxnbuqy.supabase.co";
+  const SUPABASE_ANON_KEY = ""; // Replace with your real anon key
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Load Data
+  async function loadVehicles() {
+    const { data, error } = await supabaseClient.from("vehicle_inventory").select("*").order("id");
+    if (error) { console.error(error); return; }
+    const tbody = document.getElementById("vehicleTable");
+    tbody.innerHTML = "";
+    data.forEach(v => {
+      const row = `<tr>
+        <td class="border p-2"><input type="checkbox" class="rowCheckbox" value="${v.id}"></td>
+        <td class="border p-2">${v.id}</td>
+        <td class="border p-2">${v.office || ""}</td>
+        <td class="border p-2">${v.vehicle_type || ""}</td>
+        <td class="border p-2">${v.plate_number || ""}</td>
+        <td class="border p-2">${v.engine_number || ""}</td>
+        <td class="border p-2">${v.chassis_number || ""}</td>
+        <td class="border p-2">${v.remarks || ""}</td>
+        <td class="border p-2">${v.date_of_registration || ""}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  }
+
+  // Add Vehicle
+  document.getElementById("addForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const vehicle = {
+      office: document.getElementById("office").value,
+      vehicle_type: document.getElementById("vehicle_type").value,
+      plate_number: document.getElementById("plate_number").value,
+      engine_number: document.getElementById("engine_number").value,
+      chassis_number: document.getElementById("chassis_number").value,
+      remarks: document.getElementById("remarks").value,
+      date_of_registration: document.getElementById("date_of_registration").value,
+    };
+    const { error } = await supabaseClient.from("vehicle_inventory").insert([vehicle]);
+    if (error) {
+      console.error("Add failed:", error.message);
+    } else {
+      e.target.reset();
+      loadVehicles();
+    }
+  });
+
+  // Multi Delete
+  async function deleteSelected() {
+    const checkboxes = document.querySelectorAll(".rowCheckbox:checked");
+    const ids = Array.from(checkboxes).map(cb => parseInt(cb.value));
+    if (ids.length === 0) return alert("No vehicles selected.");
+    const { error } = await supabaseClient.from("vehicle_inventory").delete().in("id", ids);
+    if (error) {
+      console.error("Delete failed:", error.message);
+    } else {
+      loadVehicles();
+    }
+  }
+
+  // Select All toggle
+  document.getElementById("selectAll").addEventListener("change", function() {
+    document.querySelectorAll(".rowCheckbox").forEach(cb => cb.checked = this.checked);
+  });
+
+  // Export
+  function exportToExcel() {
+    const table = document.querySelector("table");
+    const wb = XLSX.utils.table_to_book(table, { sheet: "Vehicles" });
+    XLSX.writeFile(wb, "VehicleInventory.xlsx");
+  }
+
+  // Import
+  async function importFromExcel(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(sheet, { defval: "" });
+
+      for (let row of rows) {
+        const vehicle = {
+          office: row.Office || row.office || "",
+          vehicle_type: row["Type of Vehicle"] || row.vehicle_type || "",
+          plate_number: row["Plate Number"] || row.plate_number || "",
+          engine_number: row["Engine Number"] || row.engine_number || "",
+          chassis_number: row["Chassis Number"] || row.chassis_number || "",
+          remarks: row.Remarks || row.remarks || "",
+          date_of_registration: row["Date of Registration"] || row.date_of_registration || null,
+        };
+        if (vehicle.office || vehicle.vehicle_type) { // prevent empty rows
+          const { error } = await supabaseClient.from("vehicle_inventory").insert([vehicle]);
+          if (error) console.error("Import failed:", error.message);
+        }
+      }
+      loadVehicles();
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  loadVehicles();
+</script>
+</body>
+</html>
